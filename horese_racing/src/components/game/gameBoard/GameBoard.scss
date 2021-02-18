@@ -1,0 +1,15 @@
+.game-board{
+  display: flex;
+  &--left{
+    flex: 0 0 20%;
+  }
+  &--center{
+    flex: 0 0 50%;
+  }
+  &--right{
+    flex: 0 0 30%;
+    div{
+      flex: 0 0 50%;
+    }
+  }
+}
