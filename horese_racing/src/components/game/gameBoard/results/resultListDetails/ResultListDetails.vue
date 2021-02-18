@@ -36,10 +36,12 @@ export default {
   },
   methods:{
     getRaceStatus(){
-      if(this.getGameStatus === GAMESTATUS.NOTSTARTED){
-        return GAMESTATUS.NOTSTARTED
+      if(this.getActiveLap && this.getActiveLap.lap){
+        if(this.getGameStatus === GAMESTATUS.NOTSTARTED){
+          return GAMESTATUS.NOTSTARTED
+        }
+        return this.getActiveLap.lap-1 === this.runningIndex ? 'Running' : this.getActiveLap.lap-1 > this.runningIndex ? 'finished' : 'not started'
       }
-      return this.getActiveLap.lap-1 === this.runningIndex ? 'Running' : this.getActiveLap.lap-1 > this.runningIndex ? 'finished' : 'not started'
     }
   }
 }
