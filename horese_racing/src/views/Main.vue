@@ -5,7 +5,6 @@
 </template>
 
 <script>
-// @ is an alias to /src
 import Game from '@/components/game/Game.vue'
 
 export default {

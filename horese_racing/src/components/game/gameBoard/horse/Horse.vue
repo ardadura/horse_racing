@@ -18,7 +18,6 @@ export default {
   props: {
     activeLap: {
       type:Object,
-      required: true
     }
   },
 }

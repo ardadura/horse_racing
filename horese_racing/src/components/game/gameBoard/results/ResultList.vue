@@ -1,7 +1,7 @@
 <template>
   <div class="result-list">
     <p>Results</p>
-    <ResultListDetails :result="result" v-for="result in getResults" :key="result.lap"/>
+    <ResultListDetails :result="result" :runningIndex="index" v-for="(result, index) in getResults" :key="result.lap"/>
   </div>
 </template>
 

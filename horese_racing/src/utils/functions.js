@@ -18,6 +18,6 @@ export function randomNameGenerator (length) {
   for(let i = 0; i < length; i++){
     const random = Math.floor(Math.random() * 27);
     name += String.fromCharCode(97 + random);
-  };
+  }
   return name;
-};
+}

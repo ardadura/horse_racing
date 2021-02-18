@@ -7,6 +7,7 @@
 <script>
 import { mapGetters } from 'vuex'
 import HorseIcon from '@/components/game/gameBoard/horse/horseDetails/HorseIcon'
+import { GAMESTATUS } from '@/constants/labels'
 
 export default {
   name: "HorseDetails",
@@ -42,6 +43,7 @@ export default {
       let speed = canStillRun ? this.horse.speed : 5
       let isFinished = position > (this.width / 4) - 55
       if(isFinished){
+        this.horse.status = GAMESTATUS.FINISHED
         this.$store.dispatch('setActiveLapResult', this.horse)
         clearInterval(this.interval)
         this.checkRunDetails()
@@ -52,7 +54,7 @@ export default {
   },
   watch:{
     'getGameStatus'(newVal, oldVal){
-      if(newVal === 'running'){
+      if(newVal === GAMESTATUS.RUNNING){
         this.interval = setInterval(() => this.moveHorse(), 100)
         this.moveHorse()
       }
@@ -63,7 +65,7 @@ export default {
     'getActiveLap'(newVal, oldVal){
       if(newVal !== oldVal){
         this.$refs.horse.style.left = 0
-        this.$store.dispatch('setGameStatus', 'paused')
+        this.$store.dispatch('setGameStatus', GAMESTATUS.PAUSED)
       }
     }
   }

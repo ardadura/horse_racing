@@ -5,3 +5,9 @@ export const GAME = Object.freeze({
   RESET: 'Reset',
   TITLE: 'Horse Racing'
 })
+export const GAMESTATUS = Object.freeze({
+  RUNNING: 'running',
+  NOTSTARTED: 'notStarted',
+  PAUSED: 'paused',
+  FINISHED: 'finished'
+})

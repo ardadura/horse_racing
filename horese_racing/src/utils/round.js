@@ -1,9 +1,13 @@
 import { TRACKLENGTH } from '@/constants/trackSpecs'
 import { getRandomNumbersFromArray } from '@/utils/functions'
+import { GAMESTATUS } from '@/constants/labels'
 
 export default class Round {
 
-  constructor(list=[], trackLength = null, status= 'notStarted') {
+  constructor(list=[],
+    trackLength = null,
+    status= GAMESTATUS.NOTSTARTED
+  ) {
     this.list = list
     this.trackLength = trackLength
     this.status = status
@@ -14,7 +18,7 @@ export default class Round {
       tracks.push({
         horses : this.getHorseListForTrack(horses),
         trackLength: TRACKLENGTH[i-1],
-        status: 'notStarted',
+        status: GAMESTATUS.NOTSTARTED,
         lap: i,
         results: []
       })

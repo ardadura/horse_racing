@@ -1,8 +1,14 @@
 import {generateRandomColor, getRandomNumber, randomNameGenerator, getRandomNumbersFromArray } from '@/utils/functions'
+import { GAMESTATUS } from '@/constants/labels'
 
 export default class Horse {
 
-  constructor(color=  null, number=  null, condition= null, name=  null, numbers= [...Array(21).keys()].slice(1)) {
+  constructor(color=  null,
+    number=  null,
+    condition= null,
+    name=  null,
+    numbers= [...Array(21).keys()].slice(1)
+  ) {
     this.color = color
     this.number = number
     this.condition = condition
@@ -17,7 +23,7 @@ export default class Horse {
         color : this.getRandomColor(),
         number: this.getUniqueNumber(),
         condition: this.getCondition(),
-        status: 'not_started',
+        status: GAMESTATUS.NOTSTARTED,
         name: this.getUniqueName(),
         speed: this.getSpeed()
       })
