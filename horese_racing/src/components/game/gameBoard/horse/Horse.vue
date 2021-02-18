@@ -4,17 +4,17 @@
     <div v-for="(horse, index) in activeLap && activeLap.horses" :key="index" class="horse-racing">
       <div class="game-track__content--lane">{{index+1}}</div>
       <div class="game-track__content--race" :style="{width: `${activeLap.trackLength/4}px`}">
-        <HorseSvg :horse="horse" :width="activeLap.trackLength"/>
+        <HorseDetails :horse="horse" :width="activeLap.trackLength"/>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import HorseSvg from '@/components/game/gameBoard/horse/HorseSvg'
+import HorseDetails from '@/components/game/gameBoard/horse/horseDetails/HorseDetails'
 export default {
   name: 'Horse.vue',
-  components: { HorseSvg },
+  components: { HorseDetails },
   props: {
     activeLap: {
       type:Object,
