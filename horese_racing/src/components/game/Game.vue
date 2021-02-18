@@ -12,12 +12,11 @@
 <script>
 import GameOptions from '@/components/game/gameOptions/GameOptions'
 import GameBoard from '@/components/game/gameBoard/GameBoard'
+import { mapGetters } from 'vuex'
 export default {
   name: 'Game',
   components: { GameBoard, GameOptions },
-  props: {
-    msg: String
-  }
+  props: {},
 }
 </script>
 

@@ -1,16 +1,58 @@
 <template>
   <div class="game-options">
-    <div class="game-options__title">Horse Racing</div>
+    <div class="game-options__title">{{ GameOptionsLabels.TITLE }}</div>
     <div class="game-options__buttons">
-      <button class="game-options__buttons--generator">Generate Program</button>
-      <button class="game-options__buttons--starter">Start / Pause</button>
+      <button class="game-options__buttons--generator" @click="generateSchedule">{{GameOptionsLabels.GENERATE_PROGRAM}}</button>
+      <button class="game-options__buttons--starter" @click="setGameCurrentStatus">{{`${GameOptionsLabels.START} / ${GameOptionsLabels.PAUSE}`}}</button>
     </div>
   </div>
 </template>
 
 <script>
+import { GAME } from '@/constants/labels'
+import { mapGetters } from 'vuex'
+import Horse from '@/utils/horse'
+import Round from '@/utils/round'
 export default {
-  name: 'GameOptions'
+  name: 'GameOptions',
+  data () {
+    return {
+      GameOptionsLabels: GAME
+    }
+  },
+  created () {},
+  computed: {
+    ...mapGetters({
+      gameStatus: 'getGameStatus',
+      activeLap: 'getActiveLap'
+    })
+  },
+  methods: {
+    generateSchedule () {
+      let horses = new Horse().generate()
+      let rounds = new Round().generate(horses)
+      let results = rounds
+      let schedule = {horses, rounds, results}
+      this.$store.dispatch('generateSchedule', schedule)
+    },
+    setGameCurrentStatus(){
+      let gameStatus
+      switch (this.gameStatus) {
+        case 'notStarted':
+          gameStatus = 'running'
+          break;
+        case 'running':
+          gameStatus = 'paused'
+          break;
+        case 'paused':
+          gameStatus = 'running'
+          break;
+        default:
+          break
+      }
+      this.$store.dispatch('setGameStatus', gameStatus)
+    }
+  }
 }
 </script>
 

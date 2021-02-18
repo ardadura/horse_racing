@@ -1,10 +1,20 @@
 <template>
-  <div class="game-track">Track</div>
+  <div class="game-track">
+    <div class="game-track__content">
+      <Horse :activeLap="getActiveLap" />
+    </div>
+  </div>
 </template>
 
 <script>
+import Horse from '@/components/game/gameBoard/horse/Horse'
+import { mapGetters } from 'vuex'
 export default {
-  name: 'Track'
+  name: 'Track',
+  components: { Horse },
+  computed:{
+    ...mapGetters(['getActiveLap'])
+  }
 }
 </script>
 
